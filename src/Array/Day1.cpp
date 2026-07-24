@@ -86,10 +86,24 @@ int maxSumarraySum (vector<int> arr, int size ){
     }
 }
 
+//reverse a interger array , Two pointer aproach
+void reverseArray (vector<int> &arr, int size ){
+    int start =0 , end = size-1;
+
+    while (start<end){
+        swap(arr[start] , arr[end]);
+        start ++;
+        end --;
+    }
+    
+}
 int main (){
     vector <int> arr = {1,2,3,4,5};
     int size = arr.size();
 
-    vector<int> nums =  TwoSum(arr, size , 9);
-    cout << nums[0] << " " << nums[1] << " ";
+    reverseArray(arr, size );
+    
+    for(int x:arr){
+        cout << x << " ";
+    }
 }
