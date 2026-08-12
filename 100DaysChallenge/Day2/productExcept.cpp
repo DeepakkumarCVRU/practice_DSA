@@ -61,10 +61,33 @@ int peakElement (vector <int> arr, int size ){
 }
 
 
+bool isPelindrome (int x){
+    if(x<0){
+        return false;
+    }
+
+    int n =x;
+    int reverserNo =0;
+    while(n>0){
+        int rem = n%10;
+        reverserNo = reverserNo * 10 + rem;
+        n=n/10;
+    }
+    if(reverserNo == x){
+        return true;
+    }else{
+        return false;
+    }
+
+
+
+
+
+
+}
+
 
 int main(){
 
-    vector <int> arr= {0,1,0};
-
-    cout << peakElement(arr, arr.size());
+    cout << isPelindrome(1121);
 }

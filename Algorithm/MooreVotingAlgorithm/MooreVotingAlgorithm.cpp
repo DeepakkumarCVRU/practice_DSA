@@ -23,6 +23,6 @@ int finMejorityElement (vector<int> arr, int size){
 
 
 int main(){
-    vector<int> arr ={1,2,3,1,1,1,3,3,3,3,3};
+    vector<int> arr ={3,3,1,1,1};
     cout<< finMejorityElement(arr, arr.size());
 }

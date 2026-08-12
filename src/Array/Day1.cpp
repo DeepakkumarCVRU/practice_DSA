@@ -97,13 +97,94 @@ void reverseArray (vector<int> &arr, int size ){
     }
     
 }
-int main (){
-    vector <int> arr = {1,2,3,4,5};
-    int size = arr.size();
 
-    reverseArray(arr, size );
-    
-    for(int x:arr){
-        cout << x << " ";
+int search(vector<int>& arr, int target){
+    int size = arr.size();
+    int start =0 , end = size-1;
+
+
+    while(start <= end){
+        int mid = start + (end - start) /2;
+
+        if(arr[mid] == target){
+            return mid;
+        }
+
+        if(arr[mid] > target){
+            if(arr[start] <= target && target <= arr[mid]){
+                end = mid -1;
+            }else{
+                start = mid +1;
+            }
+        }else{
+            if(arr[mid] <= target && target <= arr[end]){
+                start = mid +1;
+            }else{
+                end = mid -1;
+            }
+        }
+    }
+
+    return -1;
+}
+
+
+
+int morevoting (vector<int>& arr){
+    int frequency = 0 , ans = 0;
+
+    for(int i=0 ; i<arr.size(); i++){
+        if(frequency == 0){
+            ans = arr[i];
+        };
+
+        if(ans == arr[i]){
+            frequency ++;
+        }else{
+            frequency --;
+        }
+
+        if(frequency > arr.size()/2){
+            return ans;
+        }
+    } 
+
+    return ans;
+
+}
+
+
+
+void productOfArrayexceptSelf (vector <int> nums){
+    vector <int> arr (nums.size());
+
+    for(int i =0 ; i<nums.size(); i++){
+        int product =1;
+        for(int j=0; j<nums.size(); j++){
+            if(i == j){
+                continue;
+            }
+
+            product = product * arr[j];
+        }
+        arr[i] = product;
+    }
+
+  for(int x:arr){
+        cout << x;
     }
 }
+
+int main (){
+    vector <int> arrr = {1,2,2,1,1};
+    
+    productOfArrayexceptSelf(arrr);
+
+    
+   
+}
+
+
+
+
+
