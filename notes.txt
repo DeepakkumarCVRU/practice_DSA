@@ -1,0 +1,13 @@
+Find whether a number is Prime or Not Prime.
+Example: 17 → Prime
+
+Check whether a number is an Armstrong number.
+Example: 153 → Armstrong
+
+
+Check whether a number is a Perfect Number
+Example: 6 → Perfect
+(1 + 2 + 3 = 6)
+
+Find the GCD / HCF of two numbers
+Example: 12, 18 → 6
