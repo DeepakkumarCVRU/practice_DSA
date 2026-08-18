@@ -19,6 +19,10 @@ bool ispowerof2(int n){
     }
 }
 
+
+bool isPowerOfThree(int n){
+    
+}
 int main(){
     cout << "this is power of two or not -> " << ispowerof2(15);
 }
