@@ -85,7 +85,7 @@ vector<int> searchRange(vector<int>& nums, int target) {
     }
 
 int main (){
-    vector <int> arr = {1, 1, 2, 2, 2, 4, 5, 5};
+    vector <int> arr = {1, 1, 2, 2, 2, 4, 5,5,6,6,7,8};
     vector<int> x =  searchRange(arr, 2);
     cout << x[0] << " " << x[1];
 }
