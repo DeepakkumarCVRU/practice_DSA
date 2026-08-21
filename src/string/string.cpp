@@ -56,6 +56,17 @@ bool isStringpalindrome(string s){
     return true;
 }
 
+
+string removeOccurrences(string s , string part){
+
+    
+}
+
+
+
+
+
+
 int main (){
 
     string str ="racecar";

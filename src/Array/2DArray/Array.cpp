@@ -32,7 +32,7 @@ bool searchMatrix(vector <vector<int>> arr , int target){
         if(arr[midrow][0] <= target && target <= arr[midrow][col-1]){
             //write binary search
 
-            int st =0 , en = col-1;
+            int st =0 , en = col-1; 
 
             while(st <= en){
                 int mid = st +(en-st)/2;
@@ -57,12 +57,51 @@ bool searchMatrix(vector <vector<int>> arr , int target){
     return false;
 }
 
+
+    vector<int> searchRange(vector<int>& nums, int target) {
+        int size = nums.size();
+        int start =0 , end = size -1;
+        vector <int> ans(2, 0);
+
+        while(start < end){
+            int mid = start + (end-start)/2;
+
+            if(nums[mid] == target){
+                int start = mid , end = mid;
+
+                if(nums[start+1] == target){
+                    start ++;
+                }else{
+                    ans[0] = start;
+                }
+
+                if(nums[end - 1 == target]){
+                    end --;
+                }else{
+                    ans[1] = end;
+                }
+
+                if(nums[start+1] != target && nums[end] != target){
+                    return ans;
+                }
+
+
+            }else if(nums[mid] > target){
+                end = mid -1;
+            }else {
+                start = mid +1;
+            }
+        }
+        return {-1, -1};
+    }
+
 int main(){
-    vector <vector <int>> matrix = {
-        {1,3,5,7},
-        {10,11,16,20},
-        {23,30,34,60}
-    };
+    vector<int> arr ={5,7,7,8,8,10};
+   vector <int> ans = searchRange(arr, 8);
+
+    for(int x : ans){
+        cout << x << " ";
+    }
     
-cout << searchMatrix (matrix , 34);
+
 }
