@@ -1,199 +1,53 @@
-Step 1: Create project folder
-
-Open PowerShell/CMD:
-
-mkdir express-ts
-cd express-ts
-
-Initialize npm:
-
+mkdir my-node-ts-app && cd my-node-ts-app
 npm init -y
-
-
-
-
-Step 2: Install Express
-npm install express
-
-Install TypeScript and development tools:
-
-npm install -D typescript tsx @types/node @types/express
-
-Your dependencies are now:
-
-express
-typescript
-tsx
-@types/node
-@types/express
-
-
-
-Step 3: Create TypeScript configuration
-
-Run:
-
+npm i -D typescript @types/node tsx 
 npx tsc --init
+# → edit tsconfig.json (use the config above)
+mkdir src && echo 'console.log("Hello TS!");' > src/index.ts
+# → add scripts to package.json
+npm run dev
 
-This creates:
 
-tsconfig.json
 
-Replace its contents with:
+OR
+
+
+mkdir my-node-ts-app
+cd my-node-ts-app
+npm init -y
+npm install --save-dev typescript @types/node
+npm install --save-dev tsx   # modern alternative to ts-node
+npx tsc --init
+"type": "module"
+mkdir src
+# Create src/index.ts AND WRITE CODE 
+
+Add Scripts to package.jsonAdd these under "scripts":
+"scripts": {
+  "build": "tsc",
+  "start": "node dist/index.js",
+  "dev": "tsx src/index.ts",
+  "watch": "tsc --watch"
+}
+
+NPM RUN DEV
+
 
 {
   "compilerOptions": {
     "target": "ES2022",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-
     "rootDir": "./src",
     "outDir": "./dist",
-
     "strict": true,
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "sourceMap": true
   },
-  "include": ["src"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }
-What these important options mean
-target: ES2022
-
-JavaScript version that TypeScript will compile to.
-
-module: NodeNext
-
-Tells TypeScript we're using modern Node.js modules.
-
-rootDir: ./src
-
-Our TypeScript source code will be inside src.
-
-outDir: ./dist
-
-Compiled JavaScript will go into dist.
-
-
-
-Step 4: Add "type": "module"
-
-Open:
-
-package.json
-
-Add:
-
-"type": "module"
-
-Your package.json should look approximately like:
-
-{
-  "name": "express-ts",
-  "version": "1.0.0",
-  "description": "",
-  "type": "module",
-  "main": "index.js",
-  "scripts": {
-    "dev": "tsx watch src/index.ts",
-    "build": "tsc",
-    "start": "node dist/index.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^5.2.1"
-  },
-  "devDependencies": {
-    "@types/express": "^5.0.6",
-    "@types/node": "^22.20.3",
-    "tsx": "^4.0.0",
-    "typescript": "^5.9.2"
-  }
-}
-
-Don't copy the exact version numbers blindly; npm install will choose current compatible versions.
-
-
-
-Step 5: Create src folder
-
-Create:
-
-src
-
-Inside src, create:
-
-index.ts
-
-Your project structure:
-
-express-ts/
-│
-├── node_modules/
-├── src/
-│   └── index.ts
-│
-├── package-lock.json
-├── package.json
-└── tsconfig.json
-
-
-Step 6: Write Express code
-
-Inside:
-
-src/index.ts
-
-write:
-
-import express from "express";
-
-const app = express();
-
-const PORT = 3000;
-
-app.get("/", (req, res) => {
-    res.send("Hello World!");
-});
-
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
-
-Step 7: Start development server
-
-Run:
-
-npm run dev
-
-You should see:
-
-Server is running on port 3000
-
-Now open your browser:
-
-http://localhost:3000
-
-You should see:
-
-Hello World!
-
-🎉 Your Express + TypeScript server is running.
-
-
-
-he complete flow
-npm init
-   ↓
-npm install express
-   ↓
-npm install -D typescript tsx @types/node @types/express
-   ↓
-npx tsc --init
-   ↓
-Create src/index.ts
-   ↓
-npm run dev
-   ↓
-Express Server 🚀
